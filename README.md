@@ -1,36 +1,227 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TodoApp
 
-## Getting Started
+A modern Todo Application built with Next.js, TypeScript, Prisma, SQLite, Tailwind CSS, and DaisyUI.
 
-First, run the development server:
+## Features
+
+- Create tasks
+- Edit tasks
+- Archive tasks
+- Categorize tasks by topic
+- Set due dates
+- Track task status:
+  - Todo
+  - In Progress
+  - Complete
+- View active and archived tasks
+- Sort tasks by:
+  - Status
+  - Due Date
+  - Topic
+- Responsive UI with DaisyUI and Tailwind CSS
+
+---
+
+## Tech Stack
+
+- Next.js 16
+- React 19
+- TypeScript
+- Prisma ORM
+- SQLite
+- Tailwind CSS 4
+- DaisyUI 5
+
+---
+
+## Prerequisites
+
+Install the following before running the project:
+
+### Node.js
+
+Recommended version:
+
+```bash
+Node.js v22.23.2
+```
+
+Check your version:
+
+```bash
+node -v
+```
+
+If you do not have Node.js installed, download it from:
+
+https://nodejs.org
+
+---
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone <repository-url>
+cd TodoApp
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+---
+
+## Prisma Setup
+
+Generate the Prisma Client:
+
+```bash
+npx prisma generate
+```
+
+Create and synchronize the SQLite database:
+
+```bash
+npx prisma db push
+```
+
+---
+
+## Running the Application
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```text
+TodoApp/
+│
+├── app/
+│   ├── components/
+│   ├── page.tsx
+│   └── layout.tsx
+│
+├── prisma/
+│   ├── schema.prisma
+│   └── dev.db
+│
+├── src/
+│   └── lib/
+│       ├── prisma.ts
+│       └── todoActions.ts
+│
+├── public/
+│
+├── .env
+├── package.json
+└── README.md
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Database Schema
 
-## Deploy on Vercel
+### Task Status
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```prisma
+enum TaskStatus {
+  Todo
+  InProgress
+  Complete
+}
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Todo Model
+
+```prisma
+model Todo {
+  id          Int        @id @default(autoincrement())
+  title       String
+  description String?
+  topic       String?
+  dueDate     DateTime?
+  status      TaskStatus @default(Todo)
+  archived    Boolean    @default(false)
+  createdAt   DateTime   @default(now())
+}
+```
+
+---
+
+## Available Scripts
+
+### Start Development Server
+
+```bash
+npm run dev
+```
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+### Start Production Build
+
+```bash
+npm run start
+```
+
+### Generate Prisma Client
+
+```bash
+npx prisma generate
+```
+
+### Sync Database
+
+```bash
+npx prisma db push
+```
+
+### Open Prisma Studio
+
+```bash
+npx prisma studio
+```
+
+---
+
+## Team Setup
+
+After pulling the latest changes:
+
+```bash
+git pull origin main
+npm install
+npx prisma generate
+npx prisma db push
+npm run dev
+```
+
+---
+
+## Author
+Wilson Legadima
+Software Design Project
+
+University of the Witwatersrand
+
+Developed using Next.js, Prisma, and SQLite.
