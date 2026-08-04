@@ -23,7 +23,7 @@ export async function createTodo(data: {
     },
   });
 }
-//fetch
+//fetch tasks 
 export async function getTodos() {
   return prisma.todo.findMany({
     where: {
@@ -34,7 +34,7 @@ export async function getTodos() {
     },
   });
 }
-//Archive
+//Archive tasks
 export async function archiveTodo(id: number) {
   await prisma.todo.update({
     where: {
