@@ -63,7 +63,7 @@ https://nodejs.org
 Clone the repository:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/LegadimaW/TodoApp.git
 cd TodoApp
 ```
 
@@ -172,18 +172,6 @@ model Todo {
 npm run dev
 ```
 
-### Build for Production
-
-```bash
-npm run build
-```
-
-### Start Production Build
-
-```bash
-npm run start
-```
-
 ### Generate Prisma Client
 
 ```bash
@@ -194,12 +182,6 @@ npx prisma generate
 
 ```bash
 npx prisma db push
-```
-
-### Open Prisma Studio
-
-```bash
-npx prisma studio
 ```
 
 ---
