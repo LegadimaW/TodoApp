@@ -200,6 +200,103 @@ npm run dev
 
 ---
 
+
+# Testing
+
+This project uses **Jest** and **ts-jest** to verify the core functionality of the Todo application.
+
+## Running the Tests
+
+Install all dependencies:
+
+```bash
+npm install
+```
+
+Run the test suite:
+
+```bash
+npm test
+```
+
+Expected output:
+
+```bash
+PASS tests/todoActions.test.ts
+
+Test Suites: 1 passed, 1 total
+Tests:       4 passed, 4 total
+```
+
+---
+
+## Test Database
+
+The tests use a separate SQLite database (`test.db`) to ensure that testing does not affect the application's main data.
+
+Example test environment configuration:
+
+```env
+DATABASE_URL="file:./test.db"
+```
+
+---
+
+## Implemented Tests
+
+### Task Creation Test
+Verifies that a new task can be created successfully and that newly created tasks are not archived by default.
+
+### Task Archiving Test
+Verifies that a task can be archived and that the archived flag is updated correctly.
+
+### Overdue Task Test
+Verifies that a task with a due date in the past and a status other than `Complete` is identified as overdue.
+
+### Completed Task Rule Test
+Verifies that a completed task is not considered overdue even if its due date has passed.
+
+---
+
+## Test Structure
+
+```text
+tests/
+└── todoActions.test.ts
+
+jest.config.js
+.env.test
+```
+
+---
+
+## Technologies Used for Testing
+
+- Jest
+- ts-jest
+- Prisma ORM
+- SQLite
+
+---
+
+## Requirement Coverage
+
+The test suite satisfies the project testing requirements by:
+
+- Providing more than three meaningful tests
+- Testing real application behaviour
+- Testing task archiving functionality
+- Testing overdue task logic
+- Running deterministically
+- Using a separate throwaway database
+- Running successfully using:
+
+```bash
+npm test
+```
+
+All tests pass successfully and can be executed on any machine after installing the project dependencies.
+
 ## Author
 Wilson Legadima
 Software Design Project
