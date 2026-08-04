@@ -9,7 +9,7 @@ const AddTask = () => {
 
   const router = useRouter();
 
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState("Todo");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [topic, setTopic] = useState("");

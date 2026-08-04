@@ -9,6 +9,7 @@ interface Todo {
   description: string | null;
   topic: string | null;
   dueDate: Date | null;
+  status: string;
 }
 
 interface EditTaskProps {
@@ -16,7 +17,8 @@ interface EditTaskProps {
 }
 
 export default function EditTask({ task }: EditTaskProps) {
-  const [status, setStatus] = useState("");
+  
+  const [status, setStatus] = useState(task.status);
   const [title, setTitle] = useState(task.title);
   const [topic, setTopic] = useState(task.topic || "");
   const [description, setDescription] = useState(
