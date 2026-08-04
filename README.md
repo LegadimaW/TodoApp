@@ -186,20 +186,6 @@ npx prisma db push
 
 ---
 
-## Team Setup
-
-After pulling the latest changes:
-
-```bash
-git pull origin main
-npm install
-npx prisma generate
-npx prisma db push
-npm run dev
-```
-
----
-
 
 # Testing
 
